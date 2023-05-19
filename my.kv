@@ -1,0 +1,111 @@
+WindowManager:
+    MainWindow:
+    CameraClick:
+
+<MainWindow>:
+    name: "main"
+
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Button:
+
+
+        background_normal : "aller1.PNG"
+
+        background_down : 'aller2.PNG'
+
+    Button:
+        size_hint : (.5, .1)
+        pos_hint : {"x":0.2, "y":0.1}
+        text: "Start"
+        color :0,0,0,1
+
+        background_normal: ''
+        background_color: 0.9, 0.2, 0.1, 1
+
+        on_release:
+            app.root.current = "second"
+            root.manager.transition.direction = "left"
+
+
+
+
+
+<CameraClick>:
+    size: root.size
+    name: 'second'
+    orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    MyCamera:
+        id: camera
+        index: 0
+        resolution: (640, 480)
+        size_hint: 1, 1
+        pos_hint : {"x":0.0, "y":0.3}
+        play: True
+
+
+    Button:
+
+        size_hint : (.1, .05)
+        pos_hint : {"x":0.07, "y":0.9}
+        background_normal: ''
+        background_color: 0.9, 0.2, 0.1, 1
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+        
+        Image:
+            pos: (25, 540)
+            size: (30, 30)
+            source: "arrow.png"
+
+    Button:
+        on_press: root.capture3()
+        text: '3- Start Exercice'
+        pos_hint:{"x":0.03, "y":0.05}
+        size_hint : (0.9, .1)
+        background_normal: ''
+        background_color: 0.9, 0.2, 0.0, 1
+        anim_delay: 0.10
+
+
+
+    Button:
+        on_press: root.capture2()
+        text: '2- Look to camera & click'
+        pos_hint:{"x":0.03, "y":0.17}
+        size_hint : (0.9, .1)
+        background_normal: ''
+        background_color: 0.9, 0.2, 0.0, 0.7
+
+
+    Button:
+        on_press: root.capture()
+        text: '1- Fix the Rectangle '
+        pos_hint:{"x":0.03, "y":0.29}
+        size_hint : (0.9, .1)
+        background_normal: ''
+        background_color: 0.9, 0.2, 0.0, 0.4
+        anim_delay: 0.10
+
+    Label:
+        color: 0,0,0,1
+        text:'Follow the steps ! then click to confirm !'
+        pos_hint: {"x":0.02, "y":0.01}
+
+
+
+
+
